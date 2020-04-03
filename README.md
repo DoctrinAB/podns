@@ -16,7 +16,7 @@ Run arbitrary cmd in pod namespace
 $ ./podns.sh <pod> <remote_user> [<cmd>]
 ```
 
-`pod` and `remote_user` are required. `cmd` is optional. Omit to get a shell. The pod should probably be in a running state. `cmd` is run with sudo. Use `@PID` to inject container pid in cmd. Make sure to put a long cmd in quotes.
+`pod` and `remote_user` are required. `cmd` is optional - omit to get a remote shell on the host tied to the pod namespace. The pod should probably be in a running state. if `cmd` is set it is run with sudo. Use `@PID` to inject container pid in cmd. Make sure to put a long cmd in quotes.
 
 # examples
 
