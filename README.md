@@ -9,6 +9,7 @@ Run arbitrary cmd in pod namespace
 # requirements
 - bash, oc cli and jq on local host
 - docker, nsenter, ssh access to-, and sudoer on remote host
+- Any command you want to run must be available on the remote host
 
 # usage
 
@@ -41,6 +42,11 @@ Check http end point
 $ ./podns.sh pod user "curl localhost:5000/health -sik"
 ```
 
+Run a trace on read syscalls
+```bash
+$ ./podns.sh app user "strace -e trace=read -t -s 128 -p @PID"
+```
+
 Get a shell
 ```bash
 $ ./podns.sh pod user
@@ -55,5 +61,5 @@ $ ./podns.sh pod user
 - [ ] add example on pipe to cmd that defines connection name from host:port
 - [x] arg cmd
 - [x] echo to stderr so pipes work
-- [ ] add strace example
+- [x] add strace example
 - [ ] allow multiple pids or dc
