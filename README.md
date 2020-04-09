@@ -47,6 +47,11 @@ Run a trace on read syscalls
 $ ./podns.sh app user "strace -e trace=read -t -s 128 -p @PID"
 ```
 
+Grab mem usage
+```bash
+$ ./podns.sh pod user "ps -v -p @PID"
+```
+
 Get a shell
 ```bash
 $ ./podns.sh pod user
