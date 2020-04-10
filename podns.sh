@@ -44,4 +44,3 @@ else
 fi
 
 ssh $REMOTE_USER@$NODE_IP "sudo nsenter -t $PID -n $CMD"
-log # nice with a new line at the end
