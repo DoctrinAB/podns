@@ -27,34 +27,38 @@ List all network connections
 $ ./podns.sh pod user "lsof -anP -i 2> /dev/null"
 ```
 
-Poll every 5s for your server to be connected to redis
+Get a shell
 ```bash
-$ ./podns.sh pod user "lsof -anP -i:6379 -r 5"
+$ ./podns.sh pod user
+```
+
+# useful commands
+
+Poll every 5s for your server to be connected to redis
+
+```bash
+lsof -anP -i:6379 -r 5
 ```
 
 List servers listening
+
 ```bash
-$ ./podns.sh pod user "lsof -anP -i tcp" | grep -i listen
+lsof -anP -i tcp | grep -i listen
 ```
 
 Check http end point
 ```bash
-$ ./podns.sh pod user "curl localhost:5000/health -sik"
+curl localhost:5000/health -sik
 ```
 
 Run a trace on read syscalls
 ```bash
-$ ./podns.sh app user "strace -e trace=read -t -s 128 -p @PID"
+strace -e trace=read -t -s 128 -p @PID
 ```
 
 Grab mem usage
 ```bash
-$ ./podns.sh pod user "ps -v -p @PID"
-```
-
-Get a shell
-```bash
-$ ./podns.sh pod user
+ps -v -p @PID
 ```
 
 # todos
