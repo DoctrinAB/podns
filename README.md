@@ -55,6 +55,13 @@ Use filters to filter output of a remote command by piping to it.
 $ ./podns.sh pod user "lsof -nP -i 2> /dev/null" | go run filter/ws.go <port>
 ```
 
+### multiple pods (beta)
+Experimental support for running remote command in multiple pod ns.
+
+```bash
+$ go run podns.go remoteCmd pod [pod...] [-h help -u remoteUser]
+```
+
 # todos
 - [ ] if $1 is --help print usage and exit
 - [x] validate output
@@ -65,4 +72,4 @@ $ ./podns.sh pod user "lsof -nP -i 2> /dev/null" | go run filter/ws.go <port>
 - [x] arg cmd
 - [x] echo to stderr so pipes work
 - [x] add strace example
-- [ ] allow multiple pids or dc
+- [x] allow multiple pids or dc
