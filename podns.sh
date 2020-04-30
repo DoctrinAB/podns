@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Run arbitrary cmd in pod namespace
+# version 0.3
+# $ ./podns.sh <pod> <remote_user> [<cmd>]
+
 # log ops to stderr so pipes work
 function log() {
 	# use cat <<< "$@" to allow for args like -n to be printed
