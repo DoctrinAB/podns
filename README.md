@@ -55,6 +55,13 @@ Use filters to filter output of a remote command by piping to it.
 $ ./podns.sh pod user "lsof -nP -i 2> /dev/null" | go run filter/ws.go <port>
 ```
 
+### kubectl plugin
+Copy plugin/kubectl-podns to somewhere in your $PATH and invoke with
+
+```bash
+$ kubectl podns ...args
+```
+
 # todos
 - [ ] if $1 is --help print usage and exit
 - [x] validate output
