@@ -7,7 +7,7 @@ Run arbitrary cmd in pod namespace
 - When you need sudo power but the container doesn't run as root.
 
 ### requirements
-- bash, oc cli and jq on local host
+- bash, kubectl and jq on local host
 - docker, nsenter, ssh access to-, and sudoer on remote host
 - Any command you want to run must be available on the remote host
 

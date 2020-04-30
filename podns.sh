@@ -17,7 +17,7 @@ if test $# -lt 2; then
 fi
 
 log "* get node_ip and container_id from pod"
-BATCH=`oc get pod $POD -o json | jq -r '.status.hostIP, .status.containerStatuses[0].containerID'`
+BATCH=`kubectl get pod $POD -o json | jq -r '.status.hostIP, .status.containerStatuses[0].containerID'`
 if test -z "$BATCH"; then
 	log "error: no items found"
 	exit 1
