@@ -56,10 +56,10 @@ $ ./podns.sh pod user "lsof -nP -i 2> /dev/null" | go run filter/ws.go <port>
 ```
 
 ### kubectl plugin
-Copy plugin/kubectl-podns to somewhere in your $PATH and invoke with
+podns can be used as a kubectl plugin and invoked with `kubectl podns ...args`. Just copy the script to somewhere in your $PATH and rename it to `kubectl-podns`.
 
 ```bash
-$ kubectl podns ...args
+$ cp -iv podns.sh /usr/local/bin/kubectl-podns
 ```
 
 # todos
