@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Run arbitrary cmd in pod namespace
-# version 0.4
+# version 0.4.1
 # $ ./podns.sh <pod> <remote_user> [<cmd>]
 
 # log ops to stderr so pipes work
