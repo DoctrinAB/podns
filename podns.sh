@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Run arbitrary cmd in pod namespace
+# version 0.4.1
+# $ ./podns.sh <pod> <remote_user> [<cmd>]
 
 # log ops to stderr so pipes work
 function log() {
@@ -17,14 +21,14 @@ if test $# -lt 2; then
 fi
 
 log "* get node_ip and container_id from pod"
-BATCH=`oc get pod $POD -o json | jq -r '.status.hostIP, .status.containerStatuses[0].containerID'`
+BATCH=`kubectl get pod $POD -o=jsonpath='{.status.hostIP},{.status.containerStatuses[0].containerID}'`
 if test -z "$BATCH"; then
 	log "error: no items found"
 	exit 1
 fi
-NODE_IP=`cut -d ' ' -f 1 <<< $BATCH`
+NODE_IP=`cut -d , -f 1 <<< $BATCH`
 log "$NODE_IP"
-CONTAINER_ID=`cut -d ' ' -f 2 <<< $BATCH | sed 's/docker:\/\///'`
+CONTAINER_ID=`cut -d , -f 2 <<< $BATCH | sed 's/docker:\/\///'`
 log "$CONTAINER_ID"
 
 log "* get pid"
@@ -44,4 +48,3 @@ else
 fi
 
 ssh $REMOTE_USER@$NODE_IP "sudo nsenter -t $PID -n $CMD"
-log # nice with a new line at the end
