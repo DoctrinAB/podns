@@ -7,7 +7,7 @@ Run arbitrary cmd in pod namespace
 - When you need sudo power but the container doesn't run as root.
 
 ### requirements
-- bash, oc cli and jq on local host
+- bash and kubectl on local host
 - docker, nsenter, ssh access to-, and sudoer on remote host
 - Any command you want to run must be available on the remote host
 
@@ -53,6 +53,13 @@ Use filters to filter output of a remote command by piping to it.
 ```bash
 # get number of websockets connected to <port>
 $ ./podns.sh pod user "lsof -nP -i 2> /dev/null" | go run filter/ws.go <port>
+```
+
+### kubectl plugin
+podns can be used as a kubectl plugin and invoked with `kubectl podns ...args`. Just copy the script to somewhere in your $PATH and rename it to `kubectl-podns`.
+
+```bash
+$ cp -iv podns.sh /usr/local/bin/kubectl-podns
 ```
 
 ### multiple pods (beta)
